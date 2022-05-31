@@ -1,11 +1,6 @@
 from rest_framework.viewsets import ModelViewSet
-from .models import TODO, CustomUser, Project
-from .serializers import CustomUserModelSerializer, TODOModelSerializer, ProjectModelSerializer
-
-
-class CustomUserModelViewSet(ModelViewSet):
-    queryset = CustomUser.objects.all()
-    serializer_class = CustomUserModelSerializer
+from .models import TODO, Project
+from .serializers import TODOModelSerializer, ProjectModelSerializer
 
 class TODOModelViewSet(ModelViewSet):
     queryset = TODO.objects.all()
