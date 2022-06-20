@@ -17,6 +17,7 @@ class TODO(models.Model):
     updated = models.DateTimeField('Updated date', auto_now=True)
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
     users = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    is_active = models.BooleanField(default=True)
     
     def __str__(self):
         return self.description

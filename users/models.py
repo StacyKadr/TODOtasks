@@ -6,3 +6,5 @@ class CustomUser(models.Model):
     last_name = models.CharField('Surname', max_length=64)
     birthday_year = models.PositiveIntegerField()
     email = models.EmailField(unique=True)
+    is_active = models.BooleanField(default=True)
+    is_admin = models.BooleanField(default=False)

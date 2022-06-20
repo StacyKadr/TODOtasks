@@ -27,9 +27,10 @@ class TODOModelViewSet(ModelViewSet):
 
     def destroy(self, request, pk=None, *args, **kwargs):
         queryset = get_object_or_404(TODO, pk=pk)
+        serializer_class = TODOModelSerializer
         queryset.is_active = False
         queryset.save()
-        return Response(status=200)
+        return Response(serializer_class.data, status = 200)
 
 
 class ProjectModelViewSet(ModelViewSet):
