@@ -13,7 +13,7 @@ const ProjectItem = ({item}) => {
 
 const ProjectList = ({items}) => {
     let { id } = useParams();
-    let filtered_items = items.filter((item) => item.user.id === id)
+    let filtered_items = items.filter((item) => item.user.id == id)
     return (
         <table>
             <tr>

@@ -1,31 +1,31 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 
 const TODOItem = ({item}) => {
     return (
         <tr>
-            <td><Link to={`TODOs/${item.id}`}>{item.id}</Link></td>
+            <td>{item.id}</td>
             <td>{item.description}</td>
+            <td>{item.project.name}</td>
             <td>{item.created}</td>
-            <td>{item.project}</td>
-            <td>{item.user}</td>
         </tr>
     )
 }
 
 const TODOList = ({items}) => {
+    let { id } = useParams();
+    let filtered_items = items.filter((item) => item.project.id == id)
     return (
         <table>
             <tr>
                 <th>ID</th>
                 <th>DESCRIPTION</th>
-                <th>CREATED</th>
                 <th>PROJECT</th>
-                <th>USER</th>
+                <th>CREATED</th>
             </tr>
-            {items.map((item) => <TODOItem item={item} />)}
+            {filtered_items.map((item) => <TODOItem item={item} />)}
         </table>
     )
 }
-    
+
 export default TODOList

@@ -11,19 +11,15 @@ const UserItem = ({ item }) => {
     )
 }
 
-const UserList = ({ users }) => {
+const UserList = ({ items }) => {
     return (
         <table>
-            <th>
-                First name
-            </th>
-            <th>
-                Last Name
-            </th>
-            <th>
-                Birthday year
-            </th>
-            {users.map((user) => <UserItem user={user} />)}
+            <tr>
+                <th>ID</th>
+                <th>NAME</th>
+                <th>BIRTHDAY_YEAR</th>
+            </tr>
+            {items.map((item) => <UserItem item={item} />)}
         </table>
     )
 }
