@@ -15,9 +15,8 @@ const UserList = ({ items }) => {
     return (
         <table>
             <tr>
-                <th>ID</th>
-                <th>NAME</th>
-                <th>BIRTHDAY_YEAR</th>
+                <th>id</th>
+                <th>name</th>
             </tr>
             {items.map((item) => <UserItem item={item} />)}
         </table>
