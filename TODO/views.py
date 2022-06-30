@@ -7,7 +7,7 @@ from rest_framework.pagination import LimitOffsetPagination
 from rest_framework.response import Response
 from .models import TODO, Project
 from users.models import CustomUser
-from .serializers import TODOModelSerializer, ProjectModelSerializer
+from .serializers import TODOModelSerializer, ProjectModelSerializer, ProjectSerializerBase
 from users.serializers import UserModelSerializer
 from .filters import ProjectFilter, TODOFilter
 from rest_framework import filters
@@ -38,6 +38,11 @@ class ProjectModelViewSet(ModelViewSet):
     serializer_class = ProjectModelSerializer
     filterset_class = ProjectFilter
     pagination_class = ProjectLimitOffsetPagination
+
+    def get_serializer_class(self):
+        if self.request.method in ['GET']:
+            return ProjectModelSerializer
+        return ProjectSerializerBase
 
 class UserListAPIView(ListAPIView):
     renderer_classes = [JSONRenderer]
