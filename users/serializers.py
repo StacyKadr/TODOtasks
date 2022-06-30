@@ -1,11 +1,12 @@
+from rest_framework.viewsets import ModelViewSet
 from .models import CustomUser
-from rest_framework import serializers
-class UserModelSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = CustomUser
-        fields = ('user_name', 'email')
+from .serializers import UserModelSerializer, UserSerializerWithFullName
 
-class UserSerializerWithFullName(serializers.ModelSerializer):
-    class Meta:
-        model = CustomUser
-        fields = ('user_name', 'email', 'is_admin', 'is_active')
+class UserModelViewSet(ModelViewSet):
+    queryset = CustomUser.objects.get_queryset().order_by('id')
+    serializer_class = UserModelSerializer
+    
+    def get_serializer_class(self):
+        if self.request.version == '0.2':
+            return UserSerializerWithFullName
+        return UserModelSerializer
