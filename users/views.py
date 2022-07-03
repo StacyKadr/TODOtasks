@@ -1,7 +1,7 @@
 
 from rest_framework.viewsets import ModelViewSet
 from .models import CustomUser
-from .serializers import UserModelSerializer, UserSerializerWithFullName
+from users.serializers import UserModelSerializer, UserSerializerWithFullName
 
 class UserModelViewSet(ModelViewSet):
     queryset = CustomUser.objects.get_queryset().order_by('id')
