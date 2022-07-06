@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'django_filters',
     'rest_framework.authtoken',
     'drf_yasg',
+    'graphene_django',
+
 ]
 
 MIDDLEWARE = [
@@ -165,3 +167,5 @@ REST_FRAMEWORK = {
 
 
 # AUTH_USER_MODEL = 'users.CustomUser'
+
+GRAPHENE = {"SCHEMA": "TODOtasks.schema.schema"}
